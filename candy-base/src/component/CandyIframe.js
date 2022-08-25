@@ -1,7 +1,7 @@
 import React from "react";
-import Message, { listenToMessage, sendMessage, stopListenToMessage } from "./message.js";
+import { listenToMessage, sendMessage, stopListenToMessage, Message } from "./message.js";
 
-export default class CandyIframe extends React.Component {
+export class CandyIframe extends React.Component {
   constructor(probs) {
     super(probs);
     this._iframe = null;

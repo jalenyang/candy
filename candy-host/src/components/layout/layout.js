@@ -1,6 +1,6 @@
 import React from "react";
 import "./layout.less";
-import { CandyIframe } from "ui-core/src";
+import { CandyIframe, listenToMessage } from "candy-base/src";
 
 class Header extends React.Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class SideBar extends React.Component {
   render() {
     return (<nav>
       <ul>
-        <li><a title="Example App" onClick={() => this.props.onClick("http://localhost:3001")}>Example App</a></li>
+        <li><a title="Message" onClick={() => this.props.onClick("http://localhost:3001")}>Message</a></li>
       </ul>
     </nav>);
   }
@@ -44,6 +44,22 @@ class SideBar extends React.Component {
 class Content extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      payload: ""
+    };
+    this.handleReceiveMessage = this.handleReceiveMessage.bind(this);
+  }
+
+  componentDidMount() {
+    listenToMessage(this.handleReceiveMessage);
+  }
+
+  handleReceiveMessage(event) {
+    if (event.origin !== "http://localhost:3001") {
+      console.log("warning: message is rejected");
+      return;
+    }
+    this.setState({ payload: event.data });
   }
 
   render() {
@@ -51,8 +67,8 @@ class Content extends React.Component {
       src: this.props.source,
       scrolling: "no"
     };
-    console.log("payload is:" + this.props.payload);
     return (<main>
+      <h1>Message received from cand app:{this.state.payload}</h1>
       <CandyIframe attributes={attributes} payload={this.props.payload}></CandyIframe>
     </main>);
   }

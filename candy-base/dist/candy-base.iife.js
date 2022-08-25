@@ -2921,10 +2921,11 @@
     height: "100%"
   };
 
+  exports.Message = Message;
   exports.listenToMessage = listenToMessage;
   exports.sendMessage = sendMessage;
   exports.stopListenToMessage = stopListenToMessage;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-})(this["candy-common"] = this["candy-common"] || {});
+})(this["candy-base"] = this["candy-base"] || {});
