@@ -1,0 +1,50 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:14.5
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  candy-service:
+    build:
+      context: candy-service
+      dockerfile: Dockerfile
+      args:
+        - registry=$registry
+    hostname: candy-service
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+  candy-app:
+    build:
+      context: candy-app
+      dockerfile: Dockerfile
+      args:
+        - registry=$registry
+    hostname: candy-app
+    ports:
+      - "3000:3000"
+  candy-host:
+    build:
+      context: candy-service
+      dockerfile: Dockerfile
+      args:
+        - registry=$registry
+    hostname: candy-host
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres:

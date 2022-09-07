@@ -1,0 +1,15 @@
+FROM node:alpine as builder
+ARG registry
+WORKDIR /builder
+COPY package.json .
+RUN npm set registry=${registry}
+RUN npm config list
+RUN npm install
+COPY . .
+RUN npx tsc
+
+FROM node:alpine
+WORKDIR /app
+COPY --from=builder /builder/dist/* ./
+EXPOSE 3000
+ENTRYPOINT ["node", "/app/index.js"]
