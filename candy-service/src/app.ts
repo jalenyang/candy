@@ -11,11 +11,11 @@ class App {
 
 	private init(routes: Route[]) {
 		this.initMiddleWares();
-		// this.initRoutes(routes);
+		this.initRoutes(routes);
 	}
 
 	private initMiddleWares() {
-		this.express.use(express.json);
+		this.express.use(express.json());
 	}
 
 	private initRoutes(routes: Route[]) {
