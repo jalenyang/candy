@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "an example app",
   "author": "Jalen Yang",
-  "private": true,
   "license": "MIT",
   "keywords": [
     "micro-service",

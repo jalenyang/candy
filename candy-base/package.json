@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "base of the candy app",
   "author": "Jalen Yang",
-  "private": true,
   "license": "MIT",
   "type": "module",
   "main": "dist/core.esm.js",
