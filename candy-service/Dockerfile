@@ -6,10 +6,13 @@ RUN npm set registry=${registry}
 RUN npm config list
 RUN npm install
 COPY . .
-RUN npx tsc
-
-FROM node:alpine
-WORKDIR /app
-COPY --from=builder /builder/dist/* ./
+RUN npm bulild
 EXPOSE 3000
-ENTRYPOINT ["node", "/app/index.js"]
+CMD [ "node", "dist/src/index.js" ]
+
+
+#FROM node:alpine
+#WORKDIR /app
+#COPY --from=builder /builder/dist/* ./
+#EXPOSE 3000
+#ENTRYPOINT ["node", "/app/index.js"]
