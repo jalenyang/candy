@@ -6,7 +6,7 @@ RUN npm set registry=${registry}
 RUN npm config list
 RUN npm install
 COPY . .
-RUN npm bulild
+RUN npm build
 EXPOSE 3000
 CMD [ "node", "dist/src/index.js" ]
 

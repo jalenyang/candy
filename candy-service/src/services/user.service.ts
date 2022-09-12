@@ -1,11 +1,7 @@
-import { PrismaClient, User } from "@prisma/client";
+import { PrismaClient} from "@prisma/client";
 
 class UserService {
 	private prisma = new PrismaClient()
-
-	constructor() {
-
-	}
 
 	public getUsers = async () => {
 		const users = await this.prisma.user.findMany();

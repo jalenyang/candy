@@ -4,10 +4,6 @@ import { Request, Response } from 'express';
 class UserController {
 	private userService = new UserService();
 
-	constructor() {
-
-	}
-
 	public getUsers = async (req: Request, res: Response) => {
 		const users = await this.userService.getUsers();
 		res.json(users);
