@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  postgres:
+  postgres-db:
     image: postgres:14.5
     restart: unless-stopped
     environment:
@@ -19,29 +19,38 @@ services:
     build:
       context: candy-service
       dockerfile: Dockerfile
+      target: development-build
       args:
         - registry=$registry
+        - http_proxy=$HTTP_PROXY
+        - https_proxy=$HTTPS_PROXY
     hostname: candy-service
     ports:
-      - "3000:3000"
+      - "3500:3500"
     depends_on:
-      postgres:
+      postgres-db:
         condition: service_healthy
   # candy-app:
   #   build:
   #     context: candy-app
   #     dockerfile: Dockerfile
+  #     target: development-build
   #     args:
   #       - registry=$registry
+  #       - http_proxy=$HTTP_PROXY
+  #       - https_proxy=$HTTPS_PROXY
   #   hostname: candy-app
   #   ports:
-  #     - "3000:3000"
+  #     - "3000:3100"
   # candy-host:
   #   build:
   #     context: candy-service
   #     dockerfile: Dockerfile
+  #     target: development-build
   #     args:
   #       - registry=$registry
+  #       - http_proxy=$HTTP_PROXY
+  #       - https_proxy=$HTTPS_PROXY
   #   hostname: candy-host
   #   ports:
   #     - "3000:3000"

@@ -1,4 +1,5 @@
 import express from "express";
+import { hostname } from "os";
 import { Route } from "./interfaces/route.interface";
 
 class App {
@@ -25,7 +26,7 @@ class App {
 	}
 
 	public startApp(port: number) {
-		this.express.listen(port, () => {
+		this.express.listen(port, "0.0.0.0", () => {
 			console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 		});
 	}

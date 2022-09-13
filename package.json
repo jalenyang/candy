@@ -1,0 +1,24 @@
+{
+  "name": "candy",
+  "version": "0.0.1",
+  "description": "a simple framework of miro-fontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "",
+    "start": "node scripts/start.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jalenyang/candy.git"
+  },
+  "keywords": [
+    "micro-service",
+    "self-study"
+  ],
+  "author": "Jalen Yang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jalenyang/candy/issues"
+  },
+  "homepage": "https://github.com/jalenyang/candy#readme"
+}

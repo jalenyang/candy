@@ -1,0 +1,8 @@
+{
+    "apps": [
+        "candy-app"
+    ],
+    "services": [
+        "candy-service"
+    ]
+}
