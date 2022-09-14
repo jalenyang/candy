@@ -7,23 +7,22 @@ module.exports = {
   module: {
     rules: [{
       test: /\.(js|jsx)$/,
-      exclude: /(node_modules|bower_components)/,
       loader: "babel-loader",
-      options: { presets: ["@babel/env"] }
+      options: { presets: ["@babel/env", "@babel/preset-react"] }
     },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      },
-      {
-        test: /\.less$/i,
-        use: [
-          // compiles Less to CSS
-          "style-loader",
-          "css-loader",
-          "less-loader",
-        ],
-      }
+    {
+      test: /\.css$/,
+      use: ["style-loader", "css-loader"]
+    },
+    {
+      test: /\.less$/i,
+      use: [
+        // compiles Less to CSS
+        "style-loader",
+        "css-loader",
+        "less-loader",
+      ],
+    }
     ]
   },
   resolve: { extensions: ["*", ".js", ".jsx"] },

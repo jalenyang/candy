@@ -2921,6 +2921,7 @@
     height: "100%"
   };
 
+  exports.CandyIframe = CandyIframe;
   exports.Message = Message;
   exports.listenToMessage = listenToMessage;
   exports.sendMessage = sendMessage;

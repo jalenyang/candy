@@ -5,7 +5,7 @@
   "author": "Jalen Yang",
   "license": "MIT",
   "type": "module",
-  "main": "dist/core.esm.js",
+  "main": "dist/core.iife.js",
   "keywords": [
     "micro-service",
     "self-learning"

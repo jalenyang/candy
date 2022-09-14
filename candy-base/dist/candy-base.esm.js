@@ -2918,4 +2918,4 @@ CandyIframe.initialProbs = {
   height: "100%"
 };
 
-export { Message, listenToMessage, sendMessage, stopListenToMessage };
+export { CandyIframe, Message, listenToMessage, sendMessage, stopListenToMessage };
