@@ -1,4 +1,4 @@
-export * from "./component/message.js";
+export * from "./component/CandyDispatcher.js";
 export * from "./component/CandyIframe.js";
 
 

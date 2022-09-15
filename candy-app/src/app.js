@@ -1,8 +1,8 @@
 import React from "react";
-import Transceiver from "./component/transceiver";
+import Main from "./components/main/main";
 
 const App = () => (<>
-  <Transceiver></Transceiver>
+  <Main></Main>
 </>);
 
 export default App;
