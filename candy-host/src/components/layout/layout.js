@@ -35,7 +35,7 @@ class SideBar extends React.Component {
   render() {
     return (<nav>
       <ul>
-        <li><a title="Message" onClick={() => this.props.onClick("http://localhost:3100")}>Message</a></li>
+        <li><a title="Dispatcher" onClick={() => this.props.onClick("http://localhost:3100")}>Message</a></li>
       </ul>
     </nav>);
   }
@@ -79,7 +79,7 @@ class Footer extends React.Component {
   }
 
   render() {
-    return (<footer></footer>);
+    return (<footer/>);
   }
 }
 
@@ -87,16 +87,16 @@ class Layout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      source: "https://map.baidu.com/",
+      source: "",
       postPayload: ""
     };
   }
 
   render() {
     return (<div className="layout">
-      <Header onChange={(event) => this.onChange(event)}></Header>
-      <SideBar onClick={(source) => this.handleClick(source)}></SideBar>
-      <Content source={this.state.source} postPayload={this.state.postPayload}></Content>
+      <Header onChange={(event) => this.onChange(event)}/>
+      <SideBar onClick={(source) => this.handleClick(source)}/>
+      <Content source={this.state.source} postPayload={this.state.postPayload}/>
     </div>);
   }
 
