@@ -10,7 +10,7 @@ class Header extends React.Component {
   render() {
     return (<header>
       <div>
-        <h1>ui-kit</h1>
+        <h1>candy-host</h1>
       </div>
       <div className="animals">
         <select onChange={this.props.onChange}>
@@ -35,7 +35,7 @@ class SideBar extends React.Component {
   render() {
     return (<nav>
       <ul>
-        <li><a title="Dispatcher" onClick={() => this.props.onClick("http://localhost:3100")}>Message</a></li>
+        <li><a title="candy-app" onClick={() => this.props.onClick("http://localhost:3100")}>candy-app</a></li>
       </ul>
     </nav>);
   }
@@ -87,7 +87,7 @@ class Layout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      source: "",
+      source: "http://localhost:3100",
       postPayload: ""
     };
   }
