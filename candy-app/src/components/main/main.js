@@ -1,12 +1,12 @@
 import React from "react";
 import { CandyDispatcher } from "candy-base/src";
+import { CandyTabPane, CandyTabs } from "candy-base/src/component/tabs/CandyTabs";
 
 export default class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      postPayload: "",
-      receivePayload: ""
+      postPayload: "", receivePayload: ""
     };
   }
 
@@ -25,18 +25,21 @@ export default class Main extends React.Component {
 
   render() {
     const req = {
-      payload: this.state.postPayload,
-      originTarget: "http://localhost:3000",
-      source: window.parent
+      payload: this.state.postPayload, originTarget: "http://localhost:3000", source: window.parent
     };
     const msgId = crypto.randomUUID();
-    return (<div>
-      <h3>Received message from candy-host: {this.state.receivePayload}</h3>
-      <div>
-        <span>send hello message to host </span>
-        <button onClick={() => this.sendMessageToHost("Hello candy-host:" + msgId)}>Send</button>
-      </div>
-      <CandyDispatcher request={req} onMessage={(event) => this.onMessage(event)}/>
+    return (<div className="main">
+      <CandyTabs>
+        <CandyTabPane name="Message">
+          <h3>Received message from candy-host: {this.state.receivePayload}</h3>
+          <div>
+            <span>send hello message to host </span>
+            <button onClick={() => this.sendMessageToHost("Hello candy-host:" + msgId)}>Send</button>
+          </div>
+          <CandyDispatcher request={req} onMessage={(event) => this.onMessage(event)}/>
+        </CandyTabPane>
+        <CandyTabPane name="API"/>
+      </CandyTabs>
     </div>);
   }
 
