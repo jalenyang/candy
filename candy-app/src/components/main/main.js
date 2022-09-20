@@ -29,8 +29,8 @@ export default class Main extends React.Component {
     };
     const msgId = crypto.randomUUID();
     return (<div className="main">
-      <CandyTabs>
-        <CandyTabPane name="Message">
+      <CandyTabs activeKey="0">
+        <CandyTabPane name="Message" key="0">
           <h3>Received message from candy-host: {this.state.receivePayload}</h3>
           <div>
             <span>send hello message to host </span>
@@ -38,7 +38,9 @@ export default class Main extends React.Component {
           </div>
           <CandyDispatcher request={req} onMessage={(event) => this.onMessage(event)}/>
         </CandyTabPane>
-        <CandyTabPane name="API"/>
+        <CandyTabPane name="API" key="1">
+          <h3>api call</h3>
+        </CandyTabPane>
       </CandyTabs>
     </div>);
   }
