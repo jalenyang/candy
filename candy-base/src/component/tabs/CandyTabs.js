@@ -1,18 +1,11 @@
 import React from "react";
 import "./CandyTabs.less";
 
-class CandyTabPane extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (<li>
-      {this.props.children}
-    </li>);
-  }
-
+function CandyTabPane({ children }) {
+  return (<div>
+    {children}
+  </div>);
 }
 
 class CandyTabs extends React.Component {
@@ -21,8 +14,17 @@ class CandyTabs extends React.Component {
     super(props);
     const { children, activeKey } = props;
     this.state = {
-      tabPane: children.length > activeKey ? children[activeKey] : React.createElement("div", null, null), activeKey: 1
+      tabPane: children.length > activeKey ? children[activeKey] : React.createElement("div", null, null),
+      activeKey: activeKey
     };
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps !== this.props) {
+      this.setState({
+        tabPane: this.props.children[prevState.activeKey]
+      });
+    }
   }
 
   onClick(idx) {
