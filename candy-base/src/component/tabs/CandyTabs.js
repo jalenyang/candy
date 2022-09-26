@@ -8,9 +8,9 @@ class CandyTabPane extends React.Component {
   }
 
   render() {
-    return (<li>
+    return (<div>
       {this.props.children}
-    </li>);
+    </div>);
   }
 
 }
@@ -21,7 +21,8 @@ class CandyTabs extends React.Component {
     super(props);
     const { children, activeKey } = props;
     this.state = {
-      tabPane: children.length > activeKey ? children[activeKey] : React.createElement("div", null, null), activeKey: 1
+      tabPane: children.length > activeKey ? children[activeKey] : React.createElement("div", null, null),
+      activeKey: activeKey
     };
   }
 

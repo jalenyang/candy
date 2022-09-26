@@ -51,7 +51,7 @@ class Content extends React.Component {
 
   onMessage(event) {
     if (event.origin !== "http://localhost:3100") {
-      console.log("warning: message is rejected");
+      console.warn("warning: message is rejected");
       return;
     }
     this.setState({ receivePayload: event.data });
