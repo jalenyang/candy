@@ -1,6 +1,7 @@
 import React from "react";
 import { CandyDispatcher } from "candy-base/src";
 import { CandyTabPane, CandyTabs } from "candy-base/src/component/tabs/CandyTabs";
+import { SSE } from "../sse/sse";
 
 export default class Main extends React.Component {
   constructor(props) {
@@ -57,6 +58,9 @@ export default class Main extends React.Component {
         <CandyTabPane name="API" key="1">
           <button onClick={() => this.getUsers()}>Get users</button>
           <p>{users}</p>
+        </CandyTabPane>
+        <CandyTabPane name="SSE" key="2">
+          <SSE/>
         </CandyTabPane>
       </CandyTabs>
       <CandyDispatcher request={req} onMessage={(event) => this.onMessage(event)}/>
