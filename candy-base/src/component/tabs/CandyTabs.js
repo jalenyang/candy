@@ -1,7 +1,6 @@
 import React from "react";
 import "./CandyTabs.less";
 
-
 function CandyTabPane({ children }) {
   return (<div>
     {children}
