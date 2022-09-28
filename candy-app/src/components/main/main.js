@@ -2,6 +2,7 @@ import React from "react";
 import { CandyDispatcher } from "candy-base/src";
 import { CandyTabPane, CandyTabs } from "candy-base/src/component/tabs/CandyTabs";
 import { SSE } from "../sse/sse";
+import { Instant } from "../instant/instant";
 
 export default class Main extends React.Component {
   constructor(props) {
@@ -61,6 +62,9 @@ export default class Main extends React.Component {
         </CandyTabPane>
         <CandyTabPane name="SSE" key="2">
           <SSE/>
+        </CandyTabPane>
+        <CandyTabPane name="WebSocket" key="3">
+          <Instant></Instant>
         </CandyTabPane>
       </CandyTabs>
       <CandyDispatcher request={req} onMessage={(event) => this.onMessage(event)}/>

@@ -1,6 +1,6 @@
 import express from "express";
-import { hostname } from "os";
 import { Route } from "./interfaces/route.interface";
+import { WebSocketServer } from 'ws';
 
 class App {
 	public express: express.Application;
@@ -28,6 +28,20 @@ class App {
 	public startApp(port: number) {
 		this.express.listen(port, "0.0.0.0", () => {
 			console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+		});
+	}
+
+	public startWs(port: number) {
+		const wss = new WebSocketServer({ port: port });
+		wss.on("connection", function connection(ws) {
+			ws.on("message", function message(data) {
+				console.log('received: %s', data);
+				ws.send("processing>>>> " + data);
+			});
+			wss.on("close", function () {
+				console.log("closed");
+			});
+			ws.send('connected');
 		});
 	}
 
